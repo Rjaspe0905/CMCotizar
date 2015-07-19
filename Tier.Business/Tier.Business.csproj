@@ -39,7 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ParentBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tier.Data\Tier.Data.csproj">
+      <Project>{c68a190a-ea84-4e29-a07a-018239358a29}</Project>
+      <Name>Tier.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tier.Dto\Tier.Dto.csproj">
+      <Project>{fe8947ea-9b51-4da5-a987-ff33de831855}</Project>
+      <Name>Tier.Dto</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
