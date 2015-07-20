@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tier.Business
 {
-    public class ParentBusiness
-    {
+    public class BUsuario : ParentBusiness
+    {       
     }
 }
