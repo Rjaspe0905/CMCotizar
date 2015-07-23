@@ -44,13 +44,14 @@ namespace Tier.Data
         #region [Enumeradores]
         internal enum uspAcciones : byte
         {
-            Crear = 1,
+            Insertar = 1,
             RecuperarFiltrado = 2,
             Actualizar = 3,
             Aliminar = 4
         }
         #endregion
 
+        public abstract void CargarParametros(MySql.Data.MySqlClient.MySqlCommand cmd, T obj);
         public abstract IEnumerable<T> RecuperarFiltrados(T obj);
         public abstract bool Insertar(T obj);
         public abstract bool Actualizar(T obj);

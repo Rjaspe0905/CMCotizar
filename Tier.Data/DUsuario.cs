@@ -22,6 +22,11 @@ namespace Tier.Data
         }
         #endregion
 
+        public override void CargarParametros(MySql.Data.MySqlClient.MySqlCommand cmd, Dto.Usuario obj)
+        {
+            throw new NotImplementedException();
+        }
+
         public override IEnumerable<Dto.Usuario> RecuperarFiltrados(Dto.Usuario obj)
         {
             throw new NotImplementedException();

@@ -11,5 +11,9 @@ namespace Tier.Services
     [ServiceContract]
     public interface ICMCotizar
     {
+        #region [Gestión Roles]
+        [OperationContract]
+        Dto.Rol Rol_Insertar(Dto.Rol obj);
+        #endregion
     }
 }
