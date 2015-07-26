@@ -19,7 +19,7 @@ namespace Tier.Services
         /// <returns></returns>
         Dto.Rol ICMCotizar.Rol_Insertar(Dto.Rol obj)
         {
-            if (new Business.BRol().CrearRol(obj))
+            if (new Business.BRol().Crear(obj))
             {
                 return obj;
             }
@@ -39,10 +39,27 @@ namespace Tier.Services
             return new Business.BRol().RecuperarFiltrado(objFiltros);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         Dto.Rol ICMCotizar.Rol_Actualizar(Dto.Rol obj)
         {
-            if (new Business.BRol().ActualizarRol(obj))
+            if (new Business.BRol().Actualizar(obj))
+            {
+                return obj;
+            }
+            else
+            {
+                throw new FaultException(new FaultReason("El rol no pudo ser actualizado."), new FaultCode("002"));
+            }
+        }
+
+
+        Dto.Rol ICMCotizar.Rol_Eliminar(Dto.Rol obj)
+        {
+            if (new Business.BRol().Eliminar(obj))
             {
                 return obj;
             }

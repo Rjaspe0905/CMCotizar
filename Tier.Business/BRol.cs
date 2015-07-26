@@ -8,7 +8,7 @@ namespace Tier.Business
 {
     public class BRol
     {
-        public bool CrearRol(Dto.Rol obj)
+        public bool Crear(Dto.Rol obj)
         {
             return new Data.DRol().Insertar(obj);
         }
@@ -18,9 +18,14 @@ namespace Tier.Business
             return new Data.DRol().RecuperarFiltrados(obj);
         }
 
-        public bool ActualizarRol(Dto.Rol obj)
+        public bool Actualizar(Dto.Rol obj)
         {
             return new Data.DRol().Actualizar(obj);
+        }
+
+        public bool Eliminar(Dto.Rol obj)
+        {
+            return new Data.DRol().Eliminar(obj);
         }
     }
 }

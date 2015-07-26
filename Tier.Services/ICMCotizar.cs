@@ -20,6 +20,9 @@ namespace Tier.Services
 
         [OperationContract]
         Dto.Rol Rol_Actualizar(Dto.Rol obj);
+
+        [OperationContract]
+        Dto.Rol Rol_Eliminar(Dto.Rol obj);
         #endregion
     }
 }
