@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Tier.Data
 {
@@ -25,7 +26,6 @@ namespace Tier.Data
         public override void CargarParametros(MySql.Data.MySqlClient.MySqlCommand cmd, Dto.Rol obj)
         {
             cmd.Parameters.AddRange(new MySql.Data.MySqlClient.MySqlParameter[] { 
-                    new MySql.Data.MySqlClient.MySqlParameter("intAccion", uspAcciones.Insertar),
                     new MySql.Data.MySqlClient.MySqlParameter("intidrol", obj.idrol),
                     new MySql.Data.MySqlClient.MySqlParameter("strnombre", obj.nombre),
                     new MySql.Data.MySqlClient.MySqlParameter("strdescripcion", obj.descripcion),
@@ -36,7 +36,29 @@ namespace Tier.Data
 
         public override IEnumerable<Dto.Rol> RecuperarFiltrados(Dto.Rol obj)
         {
-            throw new NotImplementedException();
+            using (MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand())
+            {
+                cmd.CommandText = "seguridad.uspGestionRoles";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new MySql.Data.MySqlClient.MySqlParameter("intAccion", uspAcciones.RecuperarFiltrado));
+                this.CargarParametros(cmd, obj);
+
+                using (IDataReader reader = base.CurrentDatabase.ExecuteReader(cmd))
+                {
+                    while (reader.Read())
+                    {
+                        yield return new Dto.Rol()
+                        {
+                            activo = reader.GetBoolean(3),
+                            descripcion = reader.GetString(2),
+                            fechacreacion = reader.GetDateTime(4),
+                            idrol = reader.GetInt16(0),
+                            nombre = reader.GetString(1)
+                        };
+                    }
+                }
+            }
         }
 
         public override bool Insertar(Dto.Rol obj)
@@ -45,6 +67,8 @@ namespace Tier.Data
             {
                 cmd.CommandText = "seguridad.uspGestionRoles";
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new MySql.Data.MySqlClient.MySqlParameter("intAccion", uspAcciones.Insertar));
                 this.CargarParametros(cmd, obj);
 
                 obj.idrol = Convert.ToInt16(base.CurrentDatabase.ExecuteScalar(cmd));

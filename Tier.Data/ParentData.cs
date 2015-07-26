@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Data.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
+using System.Reflection;
 
 namespace Tier.Data
 {
@@ -55,6 +57,6 @@ namespace Tier.Data
         public abstract IEnumerable<T> RecuperarFiltrados(T obj);
         public abstract bool Insertar(T obj);
         public abstract bool Actualizar(T obj);
-        public abstract bool Eliminar(T obj);
+        public abstract bool Eliminar(T obj);        
     }
 }

@@ -24,8 +24,18 @@ namespace Tier.Services
             }
             else
             {
-                throw new FaultException(new FaultReason("El rol no pudo ser creado."));
+                throw new FaultException(new FaultReason("El rol no pudo ser creado."), new FaultCode("001"));
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="objFiltros"></param>
+        /// <returns></returns>
+        public IEnumerable<Dto.Rol> Rol_RecuperarFiltros(Dto.Rol objFiltros)
+        {
+            return new Business.BRol().RecuperarFiltrado(objFiltros);
         }
         #endregion
     }

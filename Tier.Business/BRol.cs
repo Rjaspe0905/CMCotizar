@@ -12,5 +12,10 @@ namespace Tier.Business
         {
             return new Data.DRol().Insertar(obj);
         }
+
+        public IEnumerable<Dto.Rol> RecuperarFiltrado(Dto.Rol obj)
+        {
+            return new Data.DRol().RecuperarFiltrados(obj);
+        }
     }
 }

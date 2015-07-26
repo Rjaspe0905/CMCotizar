@@ -14,6 +14,10 @@ namespace Tier.Services
         #region [Gestión Roles]
         [OperationContract]
         Dto.Rol Rol_Insertar(Dto.Rol obj);
+
+        [OperationContract]
+        IEnumerable<Dto.Rol> Rol_RecuperarFiltros(Dto.Rol objFiltros);
+
         #endregion
     }
 }
