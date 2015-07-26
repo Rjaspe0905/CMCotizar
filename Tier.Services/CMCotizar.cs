@@ -11,6 +11,7 @@ namespace Tier.Services
     public class CMCotizar : ICMCotizar
     {
         #region [Gestión Roles]
+
         /// <summary>
         /// 
         /// </summary>
@@ -36,6 +37,19 @@ namespace Tier.Services
         public IEnumerable<Dto.Rol> Rol_RecuperarFiltros(Dto.Rol objFiltros)
         {
             return new Business.BRol().RecuperarFiltrado(objFiltros);
+        }
+
+
+        Dto.Rol ICMCotizar.Rol_Actualizar(Dto.Rol obj)
+        {
+            if (new Business.BRol().ActualizarRol(obj))
+            {
+                return obj;
+            }
+            else
+            {
+                throw new FaultException(new FaultReason("El rol no pudo ser actualizado."), new FaultCode("002"));
+            }
         }
         #endregion
     }

@@ -17,5 +17,10 @@ namespace Tier.Business
         {
             return new Data.DRol().RecuperarFiltrados(obj);
         }
+
+        public bool ActualizarRol(Dto.Rol obj)
+        {
+            return new Data.DRol().Actualizar(obj);
+        }
     }
 }

@@ -79,7 +79,18 @@ namespace Tier.Data
 
         public override bool Actualizar(Dto.Rol obj)
         {
-            throw new NotImplementedException();
+            using (MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand())
+            {
+                cmd.CommandText = "seguridad.uspGestionRoles";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new MySql.Data.MySqlClient.MySqlParameter("intAccion", uspAcciones.Actualizar));
+                this.CargarParametros(cmd, obj);
+
+                int intRegistrosAfectados = base.CurrentDatabase.ExecuteNonQuery(cmd);
+
+                return intRegistrosAfectados > 0;
+            }
         }
 
         public override bool Eliminar(Dto.Rol obj)

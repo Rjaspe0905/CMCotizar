@@ -18,6 +18,8 @@ namespace Tier.Services
         [OperationContract]
         IEnumerable<Dto.Rol> Rol_RecuperarFiltros(Dto.Rol objFiltros);
 
+        [OperationContract]
+        Dto.Rol Rol_Actualizar(Dto.Rol obj);
         #endregion
     }
 }
