@@ -56,7 +56,10 @@ namespace Tier.Data
         public abstract void CargarParametros(MySql.Data.MySqlClient.MySqlCommand cmd, T obj);
         public abstract IEnumerable<T> RecuperarFiltrados(T obj);
         public abstract bool Insertar(T obj);
+        public abstract bool Insertar(T obj, MySql.Data.MySqlClient.MySqlTransaction objTrans);
         public abstract bool Actualizar(T obj);
-        public abstract bool Eliminar(T obj);        
+        public abstract bool Actualizar(T obj, MySql.Data.MySqlClient.MySqlTransaction objTrans);
+        public abstract bool Eliminar(T obj);
+        public abstract bool Eliminar(T obj, MySql.Data.MySqlClient.MySqlTransaction objTrans);
     }
 }

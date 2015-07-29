@@ -63,18 +63,33 @@ namespace Tier.Data
 
         public override bool Insertar(Dto.Rol obj)
         {
-            using (MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand())
+            using (MySql.Data.MySqlClient.MySqlConnection cnn = new MySql.Data.MySqlClient.MySqlConnection())
             {
-                cmd.CommandText = "seguridad.uspGestionRoles";
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cnn.ConnectionString = base.CurrentConnectionString.ConnectionString;
+                cnn.Open();
 
-                cmd.Parameters.Add(new MySql.Data.MySqlClient.MySqlParameter("intAccion", uspAcciones.Insertar));
-                this.CargarParametros(cmd, obj);
+                MySql.Data.MySqlClient.MySqlTransaction trans = cnn.BeginTransaction();
 
-                obj.idrol = Convert.ToInt16(base.CurrentDatabase.ExecuteScalar(cmd));
+                using (MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand())
+                {
+                    cmd.CommandText = "seguridad.uspGestionRoles";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                return obj.idrol > 0;
+                    cmd.Parameters.Add(new MySql.Data.MySqlClient.MySqlParameter("intAccion", uspAcciones.Insertar));
+                    this.CargarParametros(cmd, obj);
+
+                    obj.idrol = Convert.ToInt16(base.CurrentDatabase.ExecuteScalar(cmd, trans));
+
+
+                    return obj.idrol > 0;
+                }
             }
+
+        }
+
+        public override bool Insertar(Dto.Rol obj, MySql.Data.MySqlClient.MySqlTransaction objTrans)
+        {
+            throw new NotImplementedException();
         }
 
         public override bool Actualizar(Dto.Rol obj)
@@ -93,6 +108,11 @@ namespace Tier.Data
             }
         }
 
+        public override bool Actualizar(Dto.Rol obj, MySql.Data.MySqlClient.MySqlTransaction objTrans)
+        {
+            throw new NotImplementedException();
+        }
+
         public override bool Eliminar(Dto.Rol obj)
         {
             using (MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand())
@@ -107,6 +127,11 @@ namespace Tier.Data
 
                 return intRegistrosAfectados > 0;
             }
+        }
+
+        public override bool Eliminar(Dto.Rol obj, MySql.Data.MySqlClient.MySqlTransaction objTrans)
+        {
+            throw new NotImplementedException();
         }
     }
 }

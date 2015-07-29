@@ -11,7 +11,6 @@ namespace Tier.Services
     public class CMCotizar : ICMCotizar
     {
         #region [Gestión Roles]
-
         /// <summary>
         /// 
         /// </summary>
@@ -56,7 +55,11 @@ namespace Tier.Services
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         Dto.Rol ICMCotizar.Rol_Eliminar(Dto.Rol obj)
         {
             if (new Business.BRol().Eliminar(obj))

@@ -6,58 +6,58 @@ using System.Threading.Tasks;
 
 namespace Tier.Data
 {
-    public class DUsuario : ParentData<Dto.Usuario>
+    public class DPermiso : ParentData<Dto.Permiso>
     {
         #region [Constructores]
-        public DUsuario()
+        public DPermiso()
             : base()
         {
 
         }
 
-        public DUsuario(string CnnStr)
-            : base(CnnStr)
+        public DPermiso(string strCnnStr)
+            : base(strCnnStr)
         {
 
         }
         #endregion
 
-        public override void CargarParametros(MySql.Data.MySqlClient.MySqlCommand cmd, Dto.Usuario obj)
+        public override void CargarParametros(MySql.Data.MySqlClient.MySqlCommand cmd, Dto.Permiso obj)
         {
             throw new NotImplementedException();
         }
 
-        public override IEnumerable<Dto.Usuario> RecuperarFiltrados(Dto.Usuario obj)
+        public override IEnumerable<Dto.Permiso> RecuperarFiltrados(Dto.Permiso obj)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Insertar(Dto.Usuario obj)
+        public override bool Insertar(Dto.Permiso obj)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Insertar(Dto.Usuario obj, MySql.Data.MySqlClient.MySqlTransaction objTrans)
+        public override bool Insertar(Dto.Permiso obj, MySql.Data.MySqlClient.MySqlTransaction objTrans)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Actualizar(Dto.Usuario obj)
+        public override bool Actualizar(Dto.Permiso obj)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Actualizar(Dto.Usuario obj, MySql.Data.MySqlClient.MySqlTransaction objTrans)
+        public override bool Actualizar(Dto.Permiso obj, MySql.Data.MySqlClient.MySqlTransaction objTrans)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Eliminar(Dto.Usuario obj)
+        public override bool Eliminar(Dto.Permiso obj)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Eliminar(Dto.Usuario obj, MySql.Data.MySqlClient.MySqlTransaction objTrans)
+        public override bool Eliminar(Dto.Permiso obj, MySql.Data.MySqlClient.MySqlTransaction objTrans)
         {
             throw new NotImplementedException();
         }
